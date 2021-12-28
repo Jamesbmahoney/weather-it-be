@@ -22,9 +22,17 @@
     <title>Weather It Be</title>
 </head>
 <body>
-    <header>Weather It Be</header>
-    <section>
-        <button>Search</button>
+    <header class="text-center font-weight-bold bg-secondary text-white"><h1>Weather It Be</h1></header>    
+    <section class="flex-row justify-space-between"> 
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <h3 class="card-header text-uppercase text-white bg-dark">Enter Location</h3>
+          <form id="user-form" class="card-body">
+            <input name="text" class="form-control" placeholder="Enter City Here">
+            <button type="submit" class="btn btn-secondary fas fa-search-plus mt-3">Get User</button>
+          </form>
+        </div>
+      </div>
     </section>
     <section></section>
     <section></section>
