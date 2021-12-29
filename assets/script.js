@@ -20,10 +20,24 @@ function getCityName(cityName) {
              console.log(data);
              var lat = data.coord.lat;
              var lon = data.coord.lon;
+             getDailyDay(lat, lon);
              getFiveDay(lat, lon);
          })            
      }
       });
+}
+
+function getDailyDay(lat, lon){
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+    fetch(apiUrl)
+    .then(function(response){
+        if (response.ok) {
+            response.json().then(function(data){
+                console.log(data);
+                displayWeatherDaily(data.daily);          
+            })
+        }
+    });
 }
 
 function getFiveDay(lat, lon){
@@ -33,19 +47,13 @@ function getFiveDay(lat, lon){
         if (response.ok) {
             response.json().then(function(data){
                 console.log(data);
-                displayWeather(data.daily);
-
-                var dailyWeatherEl = document.createElement("span");
-                
-
-
-                
+                displayWeatherFiveDay(data.daily);          
             })
         }
     });
 }
 
-function displayWeather(weather){
+function displayWeatherDaily(weather){
     for (var i = 0; i < weather.length; i++) {
         var dailyTemp = weather[i].temp.day;
         var dailyHumid = weather[i].humidity;
@@ -56,4 +64,12 @@ function displayWeather(weather){
     }
 }
 
+function displayWeatherFiveDay(weather){
+    for (var i = 0; i < weather.length; i++) {
+        var dailyTemp = weather[i].temp.day;
+        var dailyHumid = weather[i].humidity;
+
+        console.log(dailyTemp, dailyHumid); 
+    }
+}
 
