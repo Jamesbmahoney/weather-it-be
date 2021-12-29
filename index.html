@@ -32,7 +32,7 @@
           <h3 class="card-header text-uppercase text-white bg-dark">Enter Location</h3>
           <form id="user-form" class="card-body">
             <input name="text" id="text-input" class="form-control" placeholder="Enter City Here">
-            <button type="submit" id="btn" class="btn btn-secondary fas fa-search-plus mt-3">Get User</button>
+            <button type="submit" id="btn" class="btn btn-secondary fas fa-search-plus mt-3">Get Weather</button>
           </form>
         </div>
       </div>
@@ -43,12 +43,27 @@
       </ul>
     </section>
 
-    <section class="card">
-      <h5>Current Forecast</h5>
+    <section class="flex-row justify-space-between">
+      <div class="card">
+      <h5 class="card-header text-uppercase text-white bg-dark">Current Forecast</h5>
+      <h3>City</h3>
+      <p class="mb-0">Temperature: <span id="current-temp"></span></p>
+      <p class="mb-0">Humidity: <span id="current-temp"></span></p>
+      <p class="mb-0">Wind Speed: <span id="current-temp"></span></p>
+      <p>UV Index: <span id=""uv-index"></span></p>
+      </div>
     </section>
 
-    <section class="card">
-      <h5>5-Day Forecast</h5>
+    <section class="flex-row justify-space-between">
+      <div class="card">
+        <h5 class="card-header text-uppercase text-white bg-dark">Five Day Forecast</h5>
+        <div class="col-2">
+          <h6 class="card-title">Date</h6>        
+          <img src="https://openweathermap.org/img/wn/01d@2x.png">
+          <P class="card-text">Temp: </p>
+          <p class="card-text">Humidity: </p>
+        </div>
+      </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>      

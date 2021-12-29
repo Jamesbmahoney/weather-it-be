@@ -1,11 +1,6 @@
 var apiKey = "b7df24583d533f6d77955dd6376b065c";
 
-
 var textInputEl = $("#text-input")
-
-
-
-
 
 $("#btn").on("click", function(event) {    
     event.preventDefault();
@@ -39,6 +34,12 @@ function getFiveDay(lat, lon){
             response.json().then(function(data){
                 console.log(data);
                 displayWeather(data.daily);
+
+                var dailyWeatherEl = document.createElement("span");
+                
+
+
+                
             })
         }
     });
@@ -54,3 +55,5 @@ function displayWeather(weather){
         console.log(dailyTemp, dailyHumid, dailyWS, dailyUV);
     }
 }
+
+
