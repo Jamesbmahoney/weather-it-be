@@ -44,25 +44,59 @@
     </section>
 
     <section class="flex-row justify-space-between">
-      <div class="card">
+      <div class="card">        
       <h5 class="card-header text-uppercase text-white bg-dark">Current Forecast</h5>
-      <h3>City</h3>
-      <p class="mb-0">Temperature: <span id="current-temp"></span></p>
-      <p class="mb-0">Humidity: <span id="current-temp"></span></p>
-      <p class="mb-0">Wind Speed: <span id="current-temp"></span></p>
-      <p>UV Index: <span id=""uv-index"></span></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-self-center">
+            <h3 id="city">City</h3>
+            <p id="dailytemp" class="mb-0">Temperature: <span id="current-temp"></span></p>
+            <p id="dailyhumid" class="mb-0">Humidity: <span id="current-temp"></span></p>
+            <p id="dailyws" class="mb-0">Wind Speed: <span id="current-temp"></span></p>
+            <p id="dailyuv" class="mb-0">UV Index: <span id=""uv-index"></span></p>
+          </div>
+        </div>
       </div>
+    </div>
     </section>
 
     <section class="flex-row justify-space-between">
       <div class="card">
         <h5 class="card-header text-uppercase text-white bg-dark">Five Day Forecast</h5>
-        <div class="col-2">
-          <h6 class="card-title">Date</h6>        
-          <img src="https://openweathermap.org/img/wn/01d@2x.png">
-          <P class="card-text">Temp: </p>
-          <p class="card-text">Humidity: </p>
-        </div>
+        <div class="container">
+          <div class="row align-items-start">
+            <div class="col">
+              <h6 id="day1" class="card-title"></h6>        
+              <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="img1"></div>
+              <P id="daytemp1" class="card-text">Temp: </p>
+              <p id="dayhumid1" class="card-text">Humidity: </p>
+            </div>
+            <div class="col">
+              <h6 id="day2" class="card-title"></h6>        
+              <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="img2"></div>
+              <P id="daytemp2" class="card-text">Temp: </p>
+              <p id="dayhumid2" class="card-text">Humidity: </p>
+            </div>
+            <div class="col">
+              <h6 id="day3" class="card-title"></h6>        
+              <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="img3"></div>
+              <P id="daytemp3" class="card-text">Temp: </p>
+              <p id="dayhumid3" class="card-text">Humidity: </p>
+            </div>
+            <div class="col">
+              <h6 id="day4" class="card-title"></h6>        
+              <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="img4"></div>
+              <P id="daytemp4" class="card-text">Temp: </p>
+              <p id="dayhumid4" class="card-text">Humidity: </p>
+            </div>
+            <div class="col">
+              <h6 id="day5" class="card-title"></h6>        
+              <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="img5"></div>
+              <P id="daytemp5" class="card-text">Temp: </p>
+              <p id="dayhumid5" class="card-text">Humidity: </p>
+            </div>
+          </div>          
+        </div>          
       </div>
     </section>
 
