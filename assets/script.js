@@ -1,3 +1,4 @@
+// Api Key for openweather
 var apiKey = "b5521588823531ae4d680a21d0efd6ca";
 
 // Get local date and time
@@ -41,8 +42,7 @@ function dateTime() {
     setTimeout("dateTime()", 1000);
 }
 
-// call specifically for the local hour
-
+// Variables for misc. ID's
 var textInputEl = $("#text-input");
 var clearEl = $("#clear-btn");
 var weatherContentEl = $("#weather-content");
@@ -50,9 +50,11 @@ var searchListEl = $("#search-list");
 
 var cityList = [];
 
+// Functions to call the stored city lists
 initList();
 clearButton();
 
+// On click events for all buttons
 $(document).on("submit", function(event) {
     event.preventDefault();
 
@@ -85,22 +87,19 @@ searchListEl.on("click", "li.city-btn", function(event) {
     searchHistory(value);
 }); 
 
+// Functions for calling both local and 5 Day forecasts
 function getWeather(cityName) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data) {
-                    // console.log(data.main);
+                response.json().then(function (data) {                
 
                     var dailyTemp = data.main.temp;
                     var dailyHumid = data.main.humidity;
-                    var dailyWS = data.wind.speed;
-
-                    // console.log(data);
+                    var dailyWS = data.wind.speed;                    
 
                     var cityName = textInputEl.val();
-
                     
                     document.getElementById("city").innerHTML = cityName;
                     document.getElementById("dailytemp").innerHTML = "Temp: " + Number(dailyTemp).toFixed(1) + "°";
@@ -161,6 +160,8 @@ for (i = 0; i < 5; i++) {
     document.getElementById("day" + (i + 1)).innerHTML = weekday[CheckDay(i)];
 }
 
+
+// Save and search history
 function searchHistory(cityName) {
 
     if (cityName) {
@@ -216,6 +217,7 @@ function clearButton() {
     }
 }
 
+// Calls the time and date at the top of the screen
 dateTime();
 
 
