@@ -36,8 +36,8 @@ function dateTime() {
     }
     // convert date and time into readable text
     var myDate = document.getElementById("currentDay");
-    myDate.textContent = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
-    myDate.innerText = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
+    myDate.textContent = "" + dayArray[day] + ", " + monthArray[month] + " " + daym + " " + year + " | " + h + ":" + m + ":" + s;
+    myDate.innerText = "" + dayArray[day] + ", " + monthArray[month] + " " + daym + " " + year + " | " + h + ":" + m + ":" + s;
 
     setTimeout("dateTime()", 1000);
 }
@@ -55,22 +55,22 @@ initList();
 clearButton();
 
 // On click events for all buttons
-$(document).on("submit", function(event) {
+$(document).on("submit", function (event) {
     event.preventDefault();
 
     var cityName = textInputEl.val();
-    
-    getWeather(cityName);    
+
+    getWeather(cityName);
     searchHistory(cityName);
 
 });
 
 $("#get-btn").on("click", function (event) {
-    event.preventDefault();    
+    event.preventDefault();
 
     var cityName = textInputEl.val();
 
-    getWeather(cityName);    
+    getWeather(cityName);
     searchHistory(cityName);
 });
 
@@ -81,11 +81,13 @@ $("#clear-btn").on("click", function (event) {
     $(this).addClass("hide");
 });
 
-searchListEl.on("click", "li.city-btn", function(event) {
+searchListEl.on("click", "li.city-btn", function (event) {
+
     var value = $(this).data("value");
+
     getWeather(value);
     searchHistory(value);
-}); 
+});
 
 // Functions for calling both local and 5 Day forecasts
 function getWeather(cityName) {
@@ -93,18 +95,24 @@ function getWeather(cityName) {
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data) {                
+                response.json().then(function (data) {
+                    // console.log(data);            
 
                     var dailyTemp = data.main.temp;
                     var dailyHumid = data.main.humidity;
-                    var dailyWS = data.wind.speed;                    
+                    var dailyWS = data.wind.speed;
 
-                    var cityName = textInputEl.val();
                     
+                    var cityName = textInputEl.val();
+
                     document.getElementById("city").innerHTML = cityName;
                     document.getElementById("dailytemp").innerHTML = "Temp: " + Number(dailyTemp).toFixed(1) + "°";
                     document.getElementById("dailyhumid").innerHTML = "Humidity: " + Number(dailyHumid).toFixed(1) + "%";
                     document.getElementById("dailyws").innerHTML = "Wind Speed: " + Number(dailyWS).toFixed(1);
+
+                    document.getElementById("currentimg").src = "http://openweathermap.org/img/wn/" +
+                        data.weather[0].icon
+                        + ".png";
 
                     var lat = data.coord.lat;
                     var lon = data.coord.lon;
@@ -133,15 +141,16 @@ function displayWeatherFiveDay(weather) {
         var fiveDayTemp = weather[i].temp.day;
         var fiveDayHumid = weather[i].humidity;
 
-        // console.log(fiveDayTemp, fiveDayHumid);
+        // console.log(fiveDayTemp, fiveDayHumid);        
+        
+        document.getElementById("daytemp" + (i + 1)).innerHTML = "Temp: " + Number(fiveDayTemp).toFixed(1) + "°";
+        document.getElementById("dayhumid" + (i + 1)).innerHTML = "Humidity: " + Number(fiveDayHumid).toFixed(1);
 
         document.getElementById((i + 1) + "img").src = "http://openweathermap.org/img/wn/" +
             weather[i].weather[0].icon
             + ".png";
-        document.getElementById("daytemp" + (i + 1)).innerHTML = "Temp: " + Number(fiveDayTemp).toFixed(1) + "°";
-        document.getElementById("dayhumid" + (i + 1)).innerHTML = "Humidity: " + Number(fiveDayHumid).toFixed(1);
 
-    }
+    }   
 }
 
 var d = new Date();
@@ -187,8 +196,8 @@ function searchHistory(cityName) {
 
 function listArray() {
     searchListEl.empty();
-    cityList.forEach(function(city){
-        var searchItem = $('<li class="list-group-item city-btn">');
+    cityList.forEach(function (city) {
+        var searchItem = $('<li class="list-group-item city-btn bg-light bg-gradient border rounded justify-content-start mx-1 my-1">');
         searchItem.attr("data-value", city);
         searchItem.text(city);
         searchListEl.prepend(searchItem);
@@ -204,12 +213,12 @@ function initList() {
 
         listArray();
 
-        if (cityList.length !==0) {
+        if (cityList.length !== 0) {
             getWeather(city[lastIndex]);
             weatherContentEl.removeClass("hide");
         }
     }
-} 
+}
 
 function clearButton() {
     if (searchListEl.text() !== "") {

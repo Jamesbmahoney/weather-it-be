@@ -28,11 +28,11 @@
       <p id="currentDay" class="lead"></p>
     </header>
 
-    <section class="flex-row justify-space-between"> 
+    <section> 
       <div class="col-12 col-md-4">
         <div class="card">
           <h3 class="card-header text-uppercase text-white bg-dark">Enter Location</h3>
-          <form id="user-form" class="card-body">
+          <form id="user-form" class="card-body bg-light bg-gradient">
             <input name="text" id="text-input" class="form-control" placeholder="Enter City Here">
             <button type="submit" id="get-btn" class="btn btn-secondary fas fa-search-plus mt-3">Get Weather</button>           
           </form>
@@ -40,59 +40,58 @@
       </div>
     </section>
      
-    <section class="card">
+    <section class="col-12 col-md-4">
       <ul class="list-group list-group-flush" id="search-list">        
       </ul>
-      <button type="reset" id="clear-btn" class="btn btn-secondary fas fa-trash-alt mt-3">Clear</button>
+      <button type="reset" id="clear-btn" class="btn btn-secondary fas fa-trash-alt mt-3 mx-1">Clear</button>
     </section>
 
-    <section class="flex-row justify-space-between">
+    <section class="d-flex justify-content-start my-3 mx-3">
       <div class="card">        
       <h5 class="card-header text-uppercase text-white bg-dark">Current Forecast</h5>
-      <div class="container">
-        <div class="row">
-          <div class="col-self-center">
+      <div class="container col bg-light bg-gradient">        
+          <div class="col">
             <h3 id="city">City</h3>
+            <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="currentimg"></div>
             <p id="dailytemp" class="mb-0">Temperature: <span id="current-temp"></span></p>
             <p id="dailyhumid" class="mb-0">Humidity: <span id="current-temp"></span></p>
             <p id="dailyws" class="mb-0">Wind Speed: <span id="current-temp"></span></p>
             <p id="dailyuv" class="mb-0">UV Index: <span id=""uv-index"></span></p>
-          </div>
-        </div>
+          </div>        
       </div>
     </div>
     </section>
 
-    <section id="weather-content" class="flex-row justify-space-between">
+    <section id="weather-content" class="flex-row justify-space-between mx-3">
       <div class="card">
         <h5 class="card-header text-uppercase text-white bg-dark">Five Day Forecast</h5>
-        <div class="container">
-          <div class="row align-items-start">
-            <div class="col">
+        <div class="container col">
+          <div class="row">
+            <div class="col border rounded bg-light bg-gradient">
               <h6 id="day1" class="card-title"></h6>        
               <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="1img"></div>
               <P id="daytemp1" class="card-text">Temp: </p>
               <p id="dayhumid1" class="card-text">Humidity: </p>
             </div>
-            <div class="col">
+            <div class="col border rounded bg-light bg-gradient">
               <h6 id="day2" class="card-title"></h6>        
               <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="2img"></div>
               <P id="daytemp2" class="card-text">Temp: </p>
               <p id="dayhumid2" class="card-text">Humidity: </p>
             </div>
-            <div class="col">
+            <div class="col border rounded bg-light bg-gradient">
               <h6 id="day3" class="card-title"></h6>        
               <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="3img"></div>
               <P id="daytemp3" class="card-text">Temp: </p>
               <p id="dayhumid3" class="card-text">Humidity: </p>
             </div>
-            <div class="col">
+            <div class="col border rounded bg-light bg-gradient">
               <h6 id="day4" class="card-title"></h6>        
               <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="4img"></div>
               <P id="daytemp4" class="card-text">Temp: </p>
               <p id="dayhumid4" class="card-text">Humidity: </p>
             </div>
-            <div class="col">
+            <div class="col border rounded me-1 bg-light bg-gradient">
               <h6 id="day5" class="card-title"></h6>        
               <div class="image"><img src="https://openweathermap.org/img/wn/01d@2x.png" id="5img"></div>
               <P id="daytemp5" class="card-text">Temp: </p>
