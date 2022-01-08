@@ -1,4 +1,4 @@
-# weather-it-be
+# Weather It Be
 
 ## Purpose
 
