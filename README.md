@@ -12,3 +12,6 @@ An HTML based weather application.  Using JQuery, Bootstrap and third party APIs
 
 ## Images
 
+<img src="./assets/Images/weatherApp1.jpg" />
+<img src="./assets/Images/weatherApp2.jpg" />
+<img src="./assets/Images/weatherApp3.jpg" />
