@@ -96,7 +96,7 @@ function getWeather(cityName) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    // console.log(data);            
+                    //  console.log(data);            
 
                     var dailyTemp = data.main.temp;
                     var dailyHumid = data.main.humidity;
@@ -137,8 +137,10 @@ function getDailyDay(lat, lon) {
 }
 
 function displayWeatherFiveDay(weather) {
+    weather.length = 5;
+    console.log (weather.length);
     for (var i = 0; i < weather.length; i++) {
-        var fiveDayTemp = weather[i].temp.day;
+        var fiveDayTemp = weather[i].temp.max;
         var fiveDayHumid = weather[i].humidity;
 
         // console.log(fiveDayTemp, fiveDayHumid);        
@@ -214,7 +216,7 @@ function initList() {
         listArray();
 
         if (cityList.length !== 0) {
-            getWeather(city[lastIndex]);
+            getWeather(cityList[lastIndex]);
             weatherContentEl.removeClass("hide");
         }
     }
