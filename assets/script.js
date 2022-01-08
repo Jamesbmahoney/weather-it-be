@@ -110,7 +110,7 @@ function getWeather(cityName) {
                     document.getElementById("dailyhumid").innerHTML = "Humidity: " + Number(dailyHumid).toFixed(1) + "%";
                     document.getElementById("dailyws").innerHTML = "Wind Speed: " + Number(dailyWS).toFixed(1);
 
-                    document.getElementById("currentimg").src = "http://openweathermap.org/img/wn/" +
+                    document.getElementById("currentimg").src = "https://openweathermap.org/img/wn/" +
                         data.weather[0].icon
                         + ".png";
 
@@ -148,7 +148,7 @@ function displayWeatherFiveDay(weather) {
         document.getElementById("daytemp" + (i + 1)).innerHTML = "Temp: " + Number(fiveDayTemp).toFixed(1) + "°";
         document.getElementById("dayhumid" + (i + 1)).innerHTML = "Humidity: " + Number(fiveDayHumid).toFixed(1);
 
-        document.getElementById((i + 1) + "img").src = "http://openweathermap.org/img/wn/" +
+        document.getElementById((i + 1) + "img").src = "https://openweathermap.org/img/wn/" +
             weather[i].weather[0].icon
             + ".png";
 
