@@ -95,8 +95,7 @@ function getWeather(cityName) {
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data) {
-                    //  console.log(data);            
+                response.json().then(function (data) {                                
 
                     var dailyTemp = data.main.temp;
                     var dailyHumid = data.main.humidity;
@@ -127,8 +126,7 @@ function getDailyDay(lat, lon) {
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data) {
-                    // console.log(data);
+                response.json().then(function (data) {                
 
                     displayWeatherFiveDay(data.daily);
                 })
@@ -138,12 +136,9 @@ function getDailyDay(lat, lon) {
 
 function displayWeatherFiveDay(weather) {
     weather.length = 5;
-    console.log (weather.length);
     for (var i = 0; i < weather.length; i++) {
         var fiveDayTemp = weather[i].temp.max;
-        var fiveDayHumid = weather[i].humidity;
-
-        // console.log(fiveDayTemp, fiveDayHumid);        
+        var fiveDayHumid = weather[i].humidity;               
         
         document.getElementById("daytemp" + (i + 1)).innerHTML = "Temp: " + Number(fiveDayTemp).toFixed(1) + "°";
         document.getElementById("dayhumid" + (i + 1)).innerHTML = "Humidity: " + Number(fiveDayHumid).toFixed(1);
