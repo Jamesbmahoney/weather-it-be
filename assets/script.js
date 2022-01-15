@@ -95,7 +95,9 @@ function getWeather(cityName) {
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data) {                                
+                response.json().then(function (data) {  
+                    
+                    console.log(data);
 
                     var dailyTemp = data.main.temp;
                     var dailyHumid = data.main.humidity;
@@ -117,22 +119,30 @@ function getWeather(cityName) {
                     var lon = data.coord.lon;
                     getDailyDay(lat, lon);
                 })
+
+                function getDailyDay(lat, lon) {
+                    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+                    fetch(apiUrl)
+                        .then(function (response) {
+                            if (response.ok) {
+                                response.json().then(function (data) {  
+                                    console.log(data);
+
+                                    var dailyUvi = data.daily[0].uvi;
+                                    
+                                    document.getElementById("dailyUvi").innerHTML = "UV Index: " + Number(dailyUvi).toFixed(1);
+                
+                                    displayWeatherFiveDay(data.daily);
+                
+                                })
+                            }
+                        });
+                }
             }
         });
 }
 
-function getDailyDay(lat, lon) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
-    fetch(apiUrl)
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (data) {                
 
-                    displayWeatherFiveDay(data.daily);
-                })
-            }
-        });
-}
 
 function displayWeatherFiveDay(weather) {
     weather.length = 5;
@@ -153,7 +163,7 @@ function displayWeatherFiveDay(weather) {
 var d = new Date();
 var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",];
 
-function CheckDay(day) {
+function checkDay(day) {
     if (day + d.getDay() > 6) {
         return day + d.getDay() - 7;
     }
@@ -162,8 +172,9 @@ function CheckDay(day) {
     }
 }
 
+
 for (i = 0; i < 5; i++) {
-    document.getElementById("day" + (i + 1)).innerHTML = weekday[CheckDay(i)];
+    document.getElementById("day" + (i + 1)).innerHTML = weekday[checkDay(i)];
 }
 
 
